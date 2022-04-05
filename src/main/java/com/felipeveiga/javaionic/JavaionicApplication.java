@@ -8,8 +8,12 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.felipeveiga.javaionic.domain.Categoria;
+import com.felipeveiga.javaionic.domain.Cidade;
+import com.felipeveiga.javaionic.domain.Estado;
 import com.felipeveiga.javaionic.domain.Produto;
 import com.felipeveiga.javaionic.repository.CategoriaRepository;
+import com.felipeveiga.javaionic.repository.CidadeRepository;
+import com.felipeveiga.javaionic.repository.EstadoRepository;
 import com.felipeveiga.javaionic.repository.ProdutoRepository;
 
 @SpringBootApplication
@@ -20,6 +24,10 @@ public class JavaionicApplication implements CommandLineRunner{
 	private CategoriaRepository categoriaRepository;
 	@Autowired
 	private ProdutoRepository produtoRepository;
+	@Autowired
+	private CidadeRepository cidadeRepository;
+	@Autowired
+	private EstadoRepository estadoRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(JavaionicApplication.class, args);
@@ -44,6 +52,19 @@ public class JavaionicApplication implements CommandLineRunner{
 
 		categoriaRepository.saveAll(Arrays.asList(cat1, cat2));
 		produtoRepository.saveAll(Arrays.asList(p1, p2, p3));
+		
+		Estado est1 = new Estado(null, "São paulo");
+		Estado est2 = new Estado(null, "Rio de Janeiro");
+		
+		Cidade cid1 = new Cidade(null, "Niterói", est2);
+		Cidade cid2 = new Cidade(null, "Santos", est1);
+		Cidade cid3 = new Cidade(null, "Macaé", est1);
+		
+		est1.getCidades().addAll(Arrays.asList(cid2));
+		est2.getCidades().addAll(Arrays.asList(cid1, cid3));
+		
+		estadoRepository.saveAll(Arrays.asList(est1, est2));
+		cidadeRepository.saveAll(Arrays.asList(cid1, cid2, cid3));
 		
 	}
 

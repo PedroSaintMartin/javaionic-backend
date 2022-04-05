@@ -3,6 +3,7 @@ package com.felipeveiga.javaionic.resources;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,8 +17,9 @@ public class ProdutoResource {
 	private ProdutoService service;
 	
 	@GetMapping("/produtos")
-	public List<Produto> findAll(){
-		return service.findAll();
+	public ResponseEntity< List<Produto>> findAll(){
+		List<Produto> produtos = service.findAll();
+		return ResponseEntity.ok().body(produtos);
 	}
 	
 }
