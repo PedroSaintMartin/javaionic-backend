@@ -17,7 +17,7 @@ public class Estado {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
+	private String nome;
 	
 	@JsonBackReference
 	@OneToMany(mappedBy = "estado")
@@ -30,10 +30,10 @@ public class Estado {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String nome) {
+		this.nome = nome;
 	}
 	public List<Cidade> getCidades() {
 		return cidades;
@@ -45,9 +45,9 @@ public class Estado {
 		
 	}
 	
-	public Estado(Integer id, String name) {
+	public Estado(Integer id, String nome) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.nome = nome;
 	}
 }

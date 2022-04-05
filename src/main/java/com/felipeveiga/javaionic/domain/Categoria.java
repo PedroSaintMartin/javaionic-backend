@@ -18,7 +18,7 @@ public class Categoria {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String name;
+	private String nome;
 	
 	@JsonBackReference
 	@ManyToMany(mappedBy = "categorias")
@@ -31,10 +31,10 @@ public class Categoria {
 		this.id = id;
 	}
 	public String getName() {
-		return name;
+		return nome;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setName(String nome) {
+		this.nome = nome;
 	}
 	public List<Produto> getProdutos() {
 		return produtos;
@@ -47,10 +47,10 @@ public class Categoria {
 		
 	}
 	
-	public Categoria(Integer id, String name) {
+	public Categoria(Integer id, String nome) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.nome = nome;
 	}
 	
 	@Override
