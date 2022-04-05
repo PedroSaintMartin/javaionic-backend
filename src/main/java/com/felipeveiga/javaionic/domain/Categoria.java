@@ -36,6 +36,12 @@ public class Categoria {
 	public void setName(String name) {
 		this.name = name;
 	}
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+	public void setProduto(List<Produto> produtos) {
+		this.produtos = produtos;
+	}
 	
 	public Categoria() {
 		
